@@ -10,8 +10,13 @@ with the chosen development environment.
 ## Install
 
 ```sh
-git config --global init.templatedir "$LOCAL_REPO/template"
+git clone https://github.com/capybara1/Git-Template.git
+git config --global init.templatedir "$PWD/Git-Template/template"
 ```
+
+## Update
+
+Execute `.git/update.sh` in repository root
 
 ## Resources
 
