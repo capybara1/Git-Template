@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Compare https://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
+
+set -e
+
+PATH="/usr/local/bin:$PATH"
+GIT_DIR="$(git rev-parse --git-dir)"
+TMP_FILE="$GIT_DIR/../$$.tags"
+TAGS_FILE="$GIT_DIR/../tags"
+
+trap "rm -f '$TMP_FILE'" EXIT
+
+git ls-files | ctags --tag-relative -L - -f"$TMP_FILE"
+mv "$TMP_FILE" "$TAGS_FILE"
